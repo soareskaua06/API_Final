@@ -2,6 +2,9 @@ const dados = require('./dados.json')
 const express = require('express')
 const fs = require('fs')
 const cors = require('cors')
+const path = require('path');
+const swaggerUi = require('swagger-ui-express');    
+const swaggerDocument = require('./swagger.json');
 
 const server = express()
 server.use(cors())

@@ -2,70 +2,86 @@
 <html lang="en">
 
 <head>
-    <title>Frontend da API de Usuários</title>   
+    <title>Joias Gremistas</title>   
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link href="styles.css" rel="stylesheet">
 </head>
 <body>
     <div class="container">
-        <h1>CADASTRO
-        </h1>
+        <h1>Conheça Joias da Base Gremista</h1>
 
+        <!-- Catálogo de Imagens -->
+        <div class="gallery">
+            <img src="https://via.placeholder.com/150" alt="Imagem 1" data-description="Descrição da Imagem 1">
+            <img src="https://via.placeholder.com/150" alt="Imagem 1" data-description="Descrição da Imagem 2">
+            <img src="https://via.placeholder.com/150" alt="Imagem 1" data-description="Descrição da Imagem 3">
+            <img src="https://via.placeholder.com/150" alt="Imagem 1" data-description="Descrição da Imagem 4">
+        <!-- Adicione outros elementos de imagem com descrições semelhantes -->
+        </div>
+        <!-- Catálogo de Imagens -->
+
+
+        <!-- Formulário de Cadastro -->
         <form id="user-form">
+            <div id="container">
+            <div class="cr7">
+                <label for="id" class="form-label">Id:</label>
+                <input type="number" class="form-control" id="id" required>
+            </div>
+
             <div class="cr7">
                 <label for="name" class="form-label">Nome:</label>
                 <input type="text" class="form-control" id="name" required>
             </div>
 
             <div class="cr7">
-                <label for="age" class="form-label">Idade:</label>
-                <input type="number" class="form-control" id="age" required>
+                <label for="description" class="form-label">Descrição:</label>
+                <input type="text" class="form-control" id="description" required>
             </div>
 
             <div class="cr7">
-                <label for="course" class="form-label">Curso:</label>
-                <input type="text" class="form-control" id="course" required>
+                <label for="course" class="form-label">URL:</label>
+                <input type="text" class="form-control" id="url" required>
             </div>
 
             <button type="submit" class="btn btn-primary btn-block">Cadastrar Usuário</button>
+        </div>
         </form>
 
+        <!-- Lista de Usuários -->
         <h1>Lista de Usuários</h1>
         <ul id="user-list" class="list-group"></ul>
 
+        <!-- Formulário de Exclusão -->
         <h1>Excluir Usuário</h1>
-
         <form id="delete-user-form">
             <div class="cr7">
                 <label for="user-id" class="form-label">ID do Usuário:</label>
                 <input type="number" class="form-control" id="user-id" required>
             </div>
-
             <button type="submit" class="btn btn-danger btn-block">Excluir Usuário</button>
         </form>
 
+        <!-- Formulário de Edição -->
         <h1>Editar Usuário</h1>
-
         <form id="edit-user-form">
             <div class="cr7">
                 <label for="edit-user-id" class="form-label">ID do Usuário:</label>
                 <input type="number" class="form-control" id="edit-user-id" required>
             </div>
-
             <div class="cr7">
                 <label for="edit-name" class="form-label">Novo Nome:</label>
                 <input type="text" class="form-control" id="edit-name" required>
             </div>
-
             <div class="cr7">
                 <label for="edit-age" class="form-label">Nova Idade:</label>
                 <input type="number" class="form-control" id="edit-age" required>
             </div>
-
             <div class="cr7">
                 <label for="edit-course" class="form-label">Novo Curso:</label>
                 <input type="text" class="form-control" id="edit-course" required>
             </div>
-
             <button type="submit" class="btn btn-success btn-block">Editar Usuário</button>
         </form>
     </div>

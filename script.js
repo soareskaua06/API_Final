@@ -54,6 +54,52 @@ userForm.addEventListener('submit', async (e) => {
     }
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+    const images = document.querySelectorAll('.gallery img');
+
+    images.forEach(image => {
+        image.addEventListener('click', function() {
+            const imageUrl = this.src;
+            const description = this.dataset.description;
+            showImageModal(imageUrl, description);
+        });
+    });
+});
+
+function showImageModal(imageUrl, description) {
+    // Criação dos elementos do modal
+    const modalOverlay = document.createElement('div');
+    modalOverlay.classList.add('modal-overlay');
+
+    const modalContent = document.createElement('div');
+    modalContent.classList.add('modal-content');
+
+    const image = document.createElement('img');
+    image.src = imageUrl;
+    image.alt = 'Imagem Ampliada';
+
+    const descParagraph = document.createElement('p');
+    descParagraph.textContent = description;
+
+    // Adiciona os elementos ao modal
+    modalContent.appendChild(image);
+    modalContent.appendChild(descParagraph);
+    modalOverlay.appendChild(modalContent);
+    document.body.appendChild(modalOverlay);
+
+    // Fecha o modal quando o usuário clica fora da imagem
+    modalOverlay.addEventListener('click', function(event) {
+        if (event.target === modalOverlay) {
+            closeModal();
+        }
+    });
+
+    // Função para fechar o modal
+    function closeModal() {
+        document.body.removeChild(modalOverlay);
+    }
+}
+
 
 
 const deleteUserForm = document.getElementById('delete-user-form');

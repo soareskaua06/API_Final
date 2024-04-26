@@ -1,34 +1,10 @@
 {
   "Usuarios": [
     {
-      "id": 1,
-      "nome": "Kauã",
-      "idade": "18",
-      "curso": "Meio-campo"
-    },
-    {
-      "id": 2,
-      "nome": "Gustavo Gouveia",
-      "idade": "17",
-      "curso": "Gremio"
-    },
-    {
-      "id": 3,
-      "nome": "Smiley",
-      "idade": "15",
-      "curso": "Volante"
-    },
-    {
       "id": 4,
-      "nome": "Pedrinho ",
-      "idade": "17",
-      "curso": "Lateral-esquerdo"
-    },
-    {
-      "id": 5,
-      "nome": "Riquelme ",
-      "idade": "18",
-      "curso": "meia"
+      "nome": "Pedro Gabriel",
+      "idade": "16",
+      "curso": "Gremio"
     }
   ]
 }
