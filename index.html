@@ -12,14 +12,6 @@
         <h1>Conheça Joias da Base Gremista</h1>
 
         <!-- Catálogo de Imagens -->
-        <div class="gallery">
-            <img src="https://via.placeholder.com/150" alt="Imagem 1" data-description="Descrição da Imagem 1">
-            <img src="https://via.placeholder.com/150" alt="Imagem 1" data-description="Descrição da Imagem 2">
-            <img src="https://via.placeholder.com/150" alt="Imagem 1" data-description="Descrição da Imagem 3">
-            <img src="https://via.placeholder.com/150" alt="Imagem 1" data-description="Descrição da Imagem 4">
-        <!-- Adicione outros elementos de imagem com descrições semelhantes -->
-        </div>
-        <!-- Catálogo de Imagens -->
 
 
         <!-- Formulário de Cadastro -->
@@ -87,6 +79,71 @@
     </div>
 
     <script src="script.js"></script>
+    <script>
+          // Função para carregar imagens
+          function loadImages() {
+            $.get('/api/imagens', function (data) {
+                $('#image-container').empty();
+                $('#image-list').empty();
+                data.forEach(function (image) {
+                    $('#image-container').append(`<div class="image-item" id="image-${image.id}">
+                        <img src="${image.url}" alt="${image.titulo}" data-description="${image.descricao}">
+                        <button class="btn btn-danger delete-btn" data-id="${image.id}">Excluir</button>
+                        <button class="btn btn-primary edit-btn" data-id="${image.id}">Editar</button>
+                    </div>`);
+                    $('#image-list').append(`<li>${image.titulo}</li>`);
+                });
+            });
+        }
+
+        // Adiciona imagem
+        $('#add-image-form').submit(function (e) {
+            e.preventDefault();
+            var titulo = $('#titulo').val();
+            var descricao = $('#descricao').val();
+            var url = $('#url').val();
+            $.post('/api/adicionar-imagem', { titulo: titulo, descricao: descricao, url: url }, function (data) {
+                loadImages();
+                $('#add-image-form').trigger("reset");
+            });
+        });
+
+        // Exclui imagem
+        $('#image-container').on('click', '.delete-btn', function () {
+            var id = $(this).data('id');
+            $.ajax({
+                url: '/api/excluir-imagem/' + id,
+                type: 'DELETE',
+                success: function (result) {
+                    $('#image-' + id).remove();
+                    loadImages();
+                }
+            });
+        });
+
+        // Edita imagem
+        $('#image-container').on('click', '.edit-btn', function () {
+            var id = $(this).data('id');
+            var newTitulo = prompt("Novo Título:");
+            var newDescricao = prompt("Nova Descrição:");
+            if (newTitulo && newDescricao) {
+                $.ajax({
+                    url: '/api/editar-imagem/' + id,
+                    type: 'PUT',
+                    data: { titulo: newTitulo, descricao: newDescricao },
+                    success: function (data) {
+                        loadImages();
+                    }
+                });
+            }
+        });
+
+        // Carrega as imagens ao carregar a página
+        $(document).ready(function () {
+            loadImages();
+        });
+    </script>
+    </script>
 </body>
 
 </html>

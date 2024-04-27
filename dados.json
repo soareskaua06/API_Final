@@ -1,10 +1,10 @@
 {
-  "Usuarios": [
+  "images": [
     {
       "id": 4,
       "nome": "Pedro Gabriel",
       "idade": "16",
-      "curso": "Gremio"
+      "url": "Gremio"
     }
   ]
 }
